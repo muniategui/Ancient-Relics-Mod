@@ -50,11 +50,27 @@ export function setup(ctx: Modding.ModContext) {
     } as unknown as Modding.Settings.ButtonConfig,
   ]);
 
-  ctx.patch(Skill as any, 'hasMasterRelic').replace(function () {
+  ctx.patch(Skill as any, 'hasMasterRelic').replace(function (f, realm) {
     this.game.currentGamemode.allowAncientRelicDrops =
       ARM_SETTINGS.get('enable-mod');
     if (!this.game.currentGamemode.allowAncientRelicDrops) return false;
-    return this.numberOfRelicsFound >= 5;
+    const relicSet = this.ancientRelicSets.get(realm);
+    return relicSet !== undefined && relicSet.isComplete;
+  });
+
+  // ensure no relics are added if mod is disabled
+  ctx.patch(Skill as any, 'addProvidedStats').replace(function (o) {
+    if (!ARM_SETTINGS.get('enable-mod')) {
+      this.skillTrees.forEach(
+        (tree) => {
+          tree.unlockedNodes.forEach((node) => {
+            this.providedStats.addStatObject(node, node.stats);
+          });
+        }
+      );
+      return;
+    }
+    else return o();
   });
 
   function updateButton() {
@@ -103,12 +119,6 @@ export function setup(ctx: Modding.ModContext) {
       lesserRelicsEnabled ? 'Enabled' : 'Disabled',
       '',
     );
-
-    // ensure no relics are added if mod is disabled
-    ctx.patch(Player, 'addAncientRelicModifiers').replace(function (o) {
-      if (!ARM_SETTINGS.get('enable-mod')) return;
-      else return o();
-    });
 
     // add the current gamemode to the list of gamemodes that the lesser relic can drop in
     if (lesserRelicsEnabled)

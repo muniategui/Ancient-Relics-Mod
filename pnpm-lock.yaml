@@ -7,12 +7,12 @@ settings:
 devDependencies:
   melvor-types:
     specifier: https://github.com/GamesByMalcsPtyLtd/Melvor-Typing-Project
-    version: github.com/GamesByMalcsPtyLtd/Melvor-Typing-Project/bd5611f61e9856b0377e300fa54b1640458b53c7
+    version: github.com/GamesByMalcsPtyLtd/Melvor-Typing-Project/6e64205655c17d346227219fe03de0fd4952b5d4
 
 packages:
 
-  github.com/GamesByMalcsPtyLtd/Melvor-Typing-Project/bd5611f61e9856b0377e300fa54b1640458b53c7:
-    resolution: {tarball: https://codeload.github.com/GamesByMalcsPtyLtd/Melvor-Typing-Project/tar.gz/bd5611f61e9856b0377e300fa54b1640458b53c7}
+  github.com/GamesByMalcsPtyLtd/Melvor-Typing-Project/6e64205655c17d346227219fe03de0fd4952b5d4:
+    resolution: {tarball: https://codeload.github.com/GamesByMalcsPtyLtd/Melvor-Typing-Project/tar.gz/6e64205655c17d346227219fe03de0fd4952b5d4}
     name: melvor-typing-project
     version: 1.13.0
     dev: true
