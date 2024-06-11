@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See standard-version for commit guidelines.
 
+### 1.3.0 (2024-06-11)
+
+### Bug Fixes
+
+- Updated mod to 1.3.0 where some methods and atributes were removed. addAncientRelicModifiers() -> addProvidedStats() and numberOfRelicsFound -> ancientRelicSets
+
 ### 1.2.2 (2023-11-03)
 
 ### Bug Fixes
